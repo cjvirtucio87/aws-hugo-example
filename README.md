@@ -21,7 +21,15 @@ hugo serve
 
 `./build.sh` builds the image.
 
-`./run.sh` builds the image _and_ runs the container from that image.
+`./run.sh` does the following:
+
+* build `publish` container
+  * package site in tarball
+  * host tarball on `httpd`
+* build `run` container
+  * downloads tarball from `publish` container
+  * `untar` site into `/var/www/html`
+  * start `httpd`
 
 ## Production (WIP)
 
