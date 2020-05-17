@@ -2,6 +2,8 @@
 
 ## Development
 
+### Host Machine
+
 While writing drafts:
 
 ```bash
@@ -14,6 +16,12 @@ To run server using only non-drafts:
 ```bash
 hugo serve
 ```
+
+### Container
+
+`./build.sh` builds the image.
+
+`./run.sh` builds the image _and_ runs the container from that image.
 
 ## Production (WIP)
 

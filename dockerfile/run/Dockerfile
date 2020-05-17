@@ -18,15 +18,13 @@ RUN set -e; \
       --output - \
       "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz" \
       | tar \
-          --gunzip \
           --extract \
           --verbose \
           --file - \
           --directory "${HUGO_BIN}"; \
     cd "${BUILD_DIR}"; \
     "${HUGO_BIN}/hugo"; \
-    mkdir --parents "${DEPLOY_DIR}"; \
-    cp --recursive public/* "${DEPLOY_DIR}"; \
+    mv public "${DEPLOY_DIR}"; \
     rm --recursive --force "${HUGO_BIN}"; \
     cd "${DEPLOY_DIR}"; \
     rm --recursive --force "${BUILD_DIR}";

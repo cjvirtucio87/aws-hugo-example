@@ -29,7 +29,16 @@ function docker_build {
   local dockerfile="$1"
   local image_tag="$2"
 
-  docker build --file "${dockerfile}" --tag "${image_tag}" .
+  local args=(
+    --file "${dockerfile}"
+    --tag "${image_tag}"
+  )
+
+  if [[ -v REBUILD ]]; then
+    args+=(--no-cache)
+  fi
+
+  docker build "${args[@]}" .
 }
 
 function docker_create_network {
@@ -53,7 +62,8 @@ function docker_run {
     --rm \
     --name "${NAME}" \
     --network "${NETWORK}" \
-    "${image_tag}" "$@"
+    --entrypoint '/bin/bash' \
+    "${image_tag}" "${args[@]}"
 }
 
 function main {
