@@ -4,3 +4,4 @@ src/themes
 **/*.swp
 
 build.sh
+run.sh
