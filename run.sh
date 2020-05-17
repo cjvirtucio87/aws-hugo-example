@@ -13,7 +13,9 @@ function main {
 
   docker_create_network
 
-  docker_build_run "$@"
+  docker_build_publish "$@"
+
+  ARTIFACT_URL="http://${NAME}-publish/aws-hugo-example.tar.gz" docker_build_run "$@"
 }
 
 main "$@"
