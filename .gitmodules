@@ -1,0 +1,3 @@
+[submodule "src/themes/hugo-theme-mixedpaper"]
+	path = src/themes/hugo-theme-mixedpaper
+	url = git@github.com:cjvirtucio87/hugo-theme-mixedpaper.git
